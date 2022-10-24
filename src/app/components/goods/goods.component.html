@@ -1,0 +1,80 @@
+<head>
+  <meta name="viewport" content="with=device-width , initial-scale=1.0" >
+  <title> University WebSite design </title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="shortcut icon" href="images/ico/favicon.ico">
+
+</head>
+
+
+
+<div class="body">
+    <div class="row">
+        <div class=" cart col col-12 col-md-6 col-lg-3" *ngFor="let good of goods ;index as i" >
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"> {{good.name | titlecase }} </h5>
+                  <h5 class="card-title"> {{good.description }} </h5>
+                  <p class="card-text"> {{good.price | currency }} </p>
+                  <button href="#" class="btn btn-primary" (click)="addToCarte(i)" *ngIf="add!=i" > Add to carte </button>
+                  <div *ngIf="add==i"  >
+                    <input type="number" class="form-control" placeholder=" Amount " #amount >
+                    <button class="btn btn-danger" (click)="buy(amount.value)" > Buy </button>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+    </div>
+</div>
+
+ <!--- testimonials --->
+ <section  class="testimonials" >
+  <h1> What Our Customers Say </h1>
+  <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+  <div class="row">
+      <div class="testimonial-col">
+          <img src="assets/sameh.jpg" >
+          <div>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam praesentium officia recusandae voluptates, voluptatem,
+                  reprehenderit cumque distinctio ex, officiis provident voluptatum? Assumenda dignissimos qui soluta facilis et officia repellat quod?</p>
+                  <h3> Sameh Mohamed </h3>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+          </div>
+      </div>
+      <div class="testimonial-col">
+         <img src="assets/nader.jpg" >
+         <div>
+             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam praesentium officia recusandae voluptates, voluptatem,
+                 reprehenderit cumque distinctio ex, officiis provident voluptatum? Assumenda dignissimos qui soluta facilis et officia repellat quod?</p>
+                 <h3> Nader Mohamed </h3>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star-half-alt"></i>
+         </div>
+     </div>
+  </div>
+
+ </section>
+ <section class="footer" >
+  <h4> About Us </h4>
+  <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+       Quibusdam libero eius blanditiis quos provident iure expedita molestiae, ratione quod.
+       <br>Totam tenetur libero dolores quos quidem porro obcaecati necessitatibus saepe distinctio. </p>
+  <div class="icons">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin"></i>
+  </div>
+  <p> Made By <i class="far fa-heart"> </i> Sherif Ezzat </p>
+
+</section>
+
+

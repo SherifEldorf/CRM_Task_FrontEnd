@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+      <div class="sidebar-header">
+          <h4>لوحة التحكم</h4>
+      </div>
+
+      <ul class="list-unstyled components">
+          <li class="active">
+              <a (click)="GetgoodsList()" > goods </a>
+
+          </li>
+          <li>
+              <a  (click)="GetCustomersList()" >customers</a>
+
+          </li>
+          <li>
+              <a (click)="GetsalesList()" > Sales </a>
+
+          </li>
+
+      </ul>
+
+
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid btn-res">
+              <button type="button" id="sidebarCollapse" class="btn btn-dark">
+                  <i class="fa fa-align-left"></i>
+              </button>
+              <div class="pl-2 pr-2 title" style="display:inline-block;">
+                 Control Panel
+              </div>
+          </div>
+
+      </nav>
+
+      <div class="container main-panel">
+
+        <div *ngIf="isgoodsList">
+          <app-products></app-products>
+      </div>
+          </div>
+          <div *ngIf="iscustomersList">
+            <app-customers></app-customers>
+        </div>
+        <div *ngIf="isSalesList">
+          <app-sales></app-sales>
+      </div>
+
+      </div>
+  </div>

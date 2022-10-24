@@ -1,0 +1,50 @@
+<div class="" >
+  <div class="alert alert-primary mb-3" role="alert">
+    <strong> Customers menu </strong>
+</div>
+<button type="button" class="btn btn-outline-success mb-3" (click)="addCustomer()"> add Customer </button>
+  <div>
+    <table id="tbl"  class="table table-response bg-light border ">
+      <thead>
+        <tr class="thead-dark" >
+          <th> firstName </th>
+          <th> lastName </th>
+          <th>email  </th>
+          <th> code  </th>
+          <th> billingAddress  </th>
+          <th> addressLine2  </th>
+          <th> Active status  </th>
+          <th>  </th>
+          <th>
+          <input type="checkbox" class="ckheader" (change)="SelectAll()"  >
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let customer of customers " >
+          <td scope="row">{{customer.firstName}}</td>
+          <td> {{customer.lastName}} </td>
+          <td> {{customer.email}} </td>
+          <td> {{customer.code}} </td>
+          <td> {{customer.billingAddress}} </td>
+          <td> {{customer.addressLine2}} </td>
+          <td> <div *ngIf="customer.activeted"> Active </div> <div *ngIf="!customer.activeted"> not Activated </div>  </td>
+          <td> <div>
+            <button type="button" (click)="EditCustomerClick(customer.id)" class="btn btn-primary btn-sm"> تعديل </button>
+          </div> </td>
+          <td>
+            <input type="checkbox" class="ckitem" value="{{customer.id}}" >
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" (click)="DeleteConfirm()" data-target="#modelId"[disabled]="!IsDelete()"  >Delete
+    </button>
+  </div>
+</div>
+
+

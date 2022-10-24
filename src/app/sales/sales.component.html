@@ -1,0 +1,51 @@
+<div class="" >
+  <div class="alert alert-primary mb-3" role="alert">
+    <strong> orders menu </strong>
+</div>
+<button type="button" class="btn btn-outline-success mb-3" (click)="addOrder()"> add Order </button>
+  <div>
+    <table id="tbl"  class="table table-response bg-light border ">
+      <thead>
+        <tr class="thead-dark" >
+          <th> status </th>
+          <th> date </th>
+          <th>customer Name </th>
+          <th> tax   </th>
+          <th> subtotal  </th>
+          <th> grandtotal  </th>
+          <th> shippingaddress   </th>
+          <th>  billing address </th>
+          <th></th>
+          <th>
+          <input type="checkbox" class="ckheader" (change)="SelectAll()"  >
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let order of orders " >
+          <td> <div *ngIf="order.status"> confirmed buy </div> <div *ngIf="!order.status"> not Confirmed </div>  </td>
+          <td> {{order.date}} </td>
+          <td>  {{order.customer?.firstName + ' '}}  {{order.customer?.lastName }}  </td>
+          <td> {{order.tax}} </td>
+          <td> {{order.subtotal}} </td>
+          <td> {{ grandtotal( order.subtotal, order.tax)  }} </td>
+          <td> {{order.shippingAddress}} </td>
+          <td> {{order.pillingAddress}} </td>
+          <td> <div>
+          </div> </td>
+          <td>
+            <input type="checkbox" class="ckitem" value="{{order.id}}" >
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" (click)="DeleteConfirm()" data-target="#modelId"[disabled]="!IsDelete()"  >Delete
+    </button>
+  </div>
+</div>
+
+

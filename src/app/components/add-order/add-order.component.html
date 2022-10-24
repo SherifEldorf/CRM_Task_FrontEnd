@@ -1,0 +1,90 @@
+<div class="container mt-4 mb-4">
+  <div class="login-container">
+      <h5> {{title}} </h5>
+      <hr class="mb-4">
+      <button type="button" class="btn btn-primary mb-4" (click)="gotoList()" > back to control panel    </button>
+      <div class="alert alert-success" *ngIf="message" role="alert">
+        <strong>{{message}}</strong>
+      </div>
+      <div class="col-md-5">
+          <form [formGroup]="OrderForm" (ngSubmit)="AddOrder()" >
+              <div class="form-group">
+                <label for="customer_Id">   customer </label>
+                <select class="form-control" formControlName="customerId" name="customer_Id" id="customer_Id"
+                (change)="onRoleChange()"  required>
+                <option selected value="0" disabled >  customer  </option>
+                  <option *ngFor="let item of Customers " [value]="item.id" > {{item.firstName}} </option>
+                </select>
+                <label for="subtotal">  subtotal </label>
+                <input type="text" formControlName="subtotal" class="form-control" id="exampleInputUsername" >
+                <label for="tax">  tax </label>
+                <input type="text" formControlName="tax" class="form-control" id="exampleInputUsername"  >
+                <label for="grandtotal">  grandtotal  </label>
+                <input type="text" formControlName="grandtotal" class="form-control" id="exampleInputUsername"  >
+                <label for="Date">  Date </label>
+                <input type="date" formControlName="Date" class="form-control" id="exampleInputUsername"  >
+                <div class="form-check">
+                  <label class="form-check-label ">
+                    <input type="checkbox" class="form-check-input" formControlName="status" name="" id="" value="checkedValue" >
+                  <label class="check-text mr-4" > Status </label>
+                  </label>
+                </div>
+                <div class="card mt-3">
+                  <h4 class="card-title pt-3 pr-3"> products </h4>
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-md-8 form-group">
+                              <select id="productId" class="custom-select" formControlName="productId" required
+                                  (change)="OnProductChange()">
+                                  <option selected value="0" disabled> choose product </option>
+                                  <option *ngFor="let product of products"  [value]="product.id"  >{{product.name}}  </option>
+                              </select>
+
+
+                          </div>
+                          <div class="col-md-4">
+                              <button type="button" name="" id="" class="btn btn-primary btn-block"
+                                  (click)="AddProduct()">{{btnProduct}}</button>
+                          </div>
+                      </div>
+                      <div *ngIf="isAddProduct">
+                          <div class="card">
+                              <div class="card-body">
+                                <app-add-product></app-add-product>
+                              </div>
+                          </div>
+                      </div>
+                      <div>
+                          <div class="d-inline-block" formArrayName="productControl"
+                              *ngFor="let act of productControl.controls; let i = index;">
+                              <div [formGroupName]="i">
+                                  <div class="alert alert-primary alert-dismissible fade show d-inline-block m-2" role="alert"
+                                      *ngIf="act.value.productId > 0">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                          (click)="onMyClick(i)">
+                                          <span aria-hidden="true">&times;</span>
+                                          <span class="sr-only">Close</span>
+                                      </button>
+                                      <input type="hidden" formControlName="productId" [value]="act.value.productId">
+                                      <label for="ProductName">{{act.value.ProductName}}</label>
+                                      <input type="hidden" id="ProductName" formControlName="ProductName" class="myTxt"
+                                          [value]="act.value.ProductName">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                <label for="status">  shippingAddress </label>
+                <input type="text" formControlName="shippingAddress" class="form-control" id="exampleInputUsername"  >
+                <label for="status">  pillingAddress </label>
+                <input type="text" formControlName="pillingAddress" class="form-control" id="exampleInputUsername"  >
+
+              <button type="submit" class="btn btn-primary" [disabled]="!this.OrderForm.valid  " > {{btntitle}} </button>
+                </div>
+          </form>
+      </div>
+
+  </div>
+
+</div>

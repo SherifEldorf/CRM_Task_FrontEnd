@@ -1,0 +1,94 @@
+<div class="container mt-4 mb-4">
+  <div class="login-container">
+    <button type="button" class="btn btn-primary mb-4" (click)="gotoList()" > back to control panel    </button>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="registrationMessage!=''" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      {{registrationMessage}}
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="errorMessage!=''" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      {{errorMessage}}
+    </div>
+      <h5> {{title}} </h5>
+      <hr class="mb-4">
+      <div class="col-md-5">
+          <form [formGroup]="CustomerForm" (ngSubmit)="AddCustomer()" >
+
+              <div class="form-group">
+                <label for="exampleInputUsername"> FirstName  </label>
+                <input type="text" formControlName="FirstName" class="form-control" id="exampleInputUsername" placeholder=" اسم  الاول"
+                [ngClass]="{ 'is-invalid': !this.CustomerForm.get('FirstName')?.valid && this.CustomerForm.get('FirstName')?.touched} " >
+                <div class="text-danger mt-3 " role="alert" *ngIf="!this.CustomerForm.get('FirstName')?.valid && this.CustomerForm.get('FirstName')?.touched  " >
+                  <strong> {{messageValidate.username.required}} </strong>
+                </div>
+
+            </div>
+            <div class="form-group">
+              <label for="exampleInputUsername"> Last Name  </label>
+              <input type="text" formControlName="LastName" class="form-control" id="exampleInputUsername" placeholder=" اسم  الأخير"
+              [ngClass]="{ 'is-invalid': !this.CustomerForm.get('LastName')?.valid && this.CustomerForm.get('LastName')?.touched} " >
+              <div class="text-danger mt-3 " role="alert" *ngIf="!this.CustomerForm.get('LastName')?.valid && this.CustomerForm.get('LastName')?.touched  " >
+                <strong> {{messageValidate.username.required}} </strong>
+              </div>
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputUsername"> Code  </label>
+            <input type="text" formControlName="Code" class="form-control"  placeholder="أدخل  الكود الخاص بمنطقتك"
+            [ngClass]="{ 'is-invalid': !this.CustomerForm.get('Code')?.valid && this.CustomerForm.get('Code')?.touched} " >
+            <div class="text-danger mt-3 " role="alert" *ngIf="!this.CustomerForm.get('Code')?.valid && this.CustomerForm.get('Code')?.touched  " >
+              <strong> {{messageValidate.username.required}} </strong>
+            </div>
+
+        </div>
+              <div class="form-group">
+                  <label for="exampleInputEmail1"> email </label>
+                  <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" placeholder="أدخل البريد الالكترونى "
+                  [ngClass]="{ 'is-invalid': !this.CustomerForm.get('email')?.valid && this.CustomerForm.get('email')?.touched}"  >
+                  <div class="text-danger mt-3 " role="alert" *ngIf="!this.CustomerForm.get('email')?.valid && this.CustomerForm.get('email')?.touched  " >
+                  <div class="text-danger mt-3 " role="alert" *ngIf="this.CustomerForm.get('email')?.hasError('required')" >
+                    <strong> {{messageValidate.email.required}}</strong>
+                  </div>
+                  <div class="text-danger mt-3 " role="alert" *ngIf="this.CustomerForm.get('email')?.hasError('email') " >
+                    <strong> {{messageValidate.email.notValid}}</strong>
+                  </div>
+
+                </div>
+
+              </div>
+
+                <div class="form-group">
+                  <label for="phoneNumber">  phone  </label>
+                  <input type="text" formControlName="phone" class="form-control" id="phoneNumber" placeholder="أدخل رقم الهاتف  ">
+              </div>
+              <div class="form-group">
+                <label for="country"> billingAddress  </label>
+                <input type="text" formControlName="billingAddress" class="form-control" id="country" placeholder="أدخل عنوان التوصيل   ">
+
+            </div>
+            <div class="form-group">
+              <label for="country"> AddressLine2  </label>
+              <input type="text" formControlName="AddressLine2" class="form-control" id="country" placeholder="أدخل العنوان الآخر   ">
+
+          </div>
+          <div class="form-check">
+            <label class="form-check-label ">
+              <input type="checkbox" class="form-check-input" formControlName="Activated" name="" id="" value="checkedValue" >
+            <label class="check-text mr-4" >تفعيل البريد الالكترونى</label>
+            </label>
+          </div>
+
+              <button type="submit" class="btn btn-primary" [disabled]="!this.CustomerForm.valid  " > {{btntitle}} </button>
+
+          </form>
+      </div>
+
+  </div>
+
+</div>

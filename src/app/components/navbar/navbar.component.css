@@ -1,0 +1,9 @@
+input{
+    margin-left: 850px;
+}
+#searchbutton{
+    margin-left: 10px;
+}
+input:focus{
+    transform: scale(1.2);
+}

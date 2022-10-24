@@ -1,0 +1,49 @@
+<div class="container mt-4 mb-4">
+  <div class="login-container">
+      <h5> {{title}} </h5>
+      <hr class="mb-4">
+      <button type="button" class="btn btn-primary mb-4" (click)="gotoList()" > back to control panel    </button>
+      <div class="alert alert-success" *ngIf="message" role="alert">
+        <strong>{{message}}</strong>
+      </div>
+      <div class="col-md-5">
+          <form [formGroup]="GoodForm" (ngSubmit)="AddGood()" >
+              <div class="form-group">
+                  <label for="GoodName">  Product name </label>
+                  <input type="text" formControlName="GoodName" class="form-control" id="exampleInputUsername" placeholder="Product name "
+                  [ngClass]="{ 'is-invalid': !this.GoodForm.get('GoodName')?.valid && this.GoodForm.get('GoodName')?.touched} " >
+                  <div class="text-danger mt-3 " role="alert" *ngIf="!this.GoodForm.get('GoodName')?.valid && this.GoodForm.get('GoodName')?.touched && this.GoodForm.get('GoodName')?.value==='' " >
+                    <strong> {{messageValidate.productName.required}} </strong>
+                  </div>
+                  <div class="text-danger mt-3 " role="alert" *ngIf="( this.GoodForm.get('CatName')?.value !== null && this.GoodForm.get('GoodName')?.value !==''&& this.GoodForm.get('GoodName')?.value.length >=150  ) "  >
+                    <strong> {{messageValidate.productName.max}} </strong>
+                  </div>
+                  <label for="CatName"> price  </label>
+                  <input type="number" formControlName="GoodPrice" class="form-control" id="exampleInputUsername" placeholder=" price"
+                  [ngClass]="{ 'is-invalid': !this.GoodForm.get('GoodPrice')?.valid && this.GoodForm.get('GoodPrice')?.touched} " >
+                  <div class="text-danger mt-3 " role="alert" *ngIf="!this.GoodForm.get('GoodPrice')?.valid && this.GoodForm.get('GoodPrice')?.touched && this.GoodForm.get('GoodPrice')?.value==='' " >
+                    <strong> {{messageValidate.productName.required}} </strong>
+                  </div>
+                  <div class="text-danger mt-3 " role="alert" *ngIf="( this.GoodForm.get('GoodPrice')?.value !== null && this.GoodForm.get('GoodPrice')?.value !==''&& this.GoodForm.get('GoodPrice')?.value.length >=150  ) "  >
+                    <strong> {{messageValidate.productName.max}} </strong>
+                  </div>
+              </div>
+                  <label for="GoodDeccription"> Description  </label>
+                  <input type="text" formControlName="GoodDeccription" class="form-control" id="exampleInputUsername" placeholder="Description"
+                  [ngClass]="{ 'is-invalid': !this.GoodForm.get('GoodDeccription')?.valid && this.GoodForm.get('GoodDeccription')?.touched} " >
+                  <div class="text-danger mt-3 " role="alert" *ngIf="!this.GoodForm.get('GoodDeccription')?.valid && this.GoodForm.get('GoodDeccription')?.touched && this.GoodForm.get('GoodDeccription')?.value==='' " >
+                    <strong> {{messageValidate.productName.required}} </strong>
+                  </div>
+                  <div class="text-danger mt-3 " role="alert" *ngIf="( this.GoodForm.get('GoodDeccription')?.value !== null && this.GoodForm.get('GoodDeccription')?.value !==''&& this.GoodForm.get('GoodDeccription')?.value.length >=150  ) "  >
+                    <strong> {{messageValidate.productName.max}} </strong>
+                  </div>
+
+
+              <button type="submit" class="btn btn-primary" [disabled]="!this.GoodForm.valid  " > {{btntitle}} </button>
+
+          </form>
+      </div>
+
+  </div>
+
+</div>
